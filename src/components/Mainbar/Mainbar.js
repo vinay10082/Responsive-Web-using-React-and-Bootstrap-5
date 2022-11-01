@@ -27,7 +27,23 @@ function Mainbar() {
           </li>
       </ul>
           <span class="post mr-auto">
-          <button class="btn btn-light">Write Post<i class="fas fa-downarrow"></i></button>
+          <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#PostModal">
+  Write a Post <i class="fas fa-downarrow"></i>
+</button>
+{/* Model */}
+<div class="modal fade" id="PostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Make Your Post Here !</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      Hello! World
+      </div>
+    </div>
+  </div>
+</div>
           <button class="btn btn-primary">Join a Group</button>
           </span>
     </div>

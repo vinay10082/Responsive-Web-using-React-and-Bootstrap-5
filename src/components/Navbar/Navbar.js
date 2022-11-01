@@ -18,11 +18,11 @@ function Navbar() {
 </div>
 <div class="col">
     <div class="float-end">
-      <b>create account.</b><button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <b>create account.</b><button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#RegistrationModal">
   It's free!
 </button>
 {/* Model */}
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="RegistrationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
