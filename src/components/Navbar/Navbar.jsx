@@ -1,6 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import { setCurrentUser } from '../../actions/currentUser'
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import decode from 'jwt-decode'
+
 import logo from '../../assets/logo.png'
 // import Group from '../../assets/Group.png'
+import Avatar from '../../components/Avatar/Avatar'
 
 function Navbar() {
   const [isSignup, setIsSignup] = useState(false)
@@ -27,6 +33,28 @@ const handleSubmit = (e) => {
         console.log({email, password})
     }
 }
+
+  const dispatch = useDispatch()
+  var User = useSelector((state) => (state.currentUserReducer))
+  const navigate = useNavigate();
+  
+  
+  const handleSignout = () => {
+      dispatch({ type: 'LOGOUT'});
+      navigate('/')
+      dispatch(setCurrentUser(null))
+  }
+  useEffect(() => {
+      const token = User?.token 
+      if(token){
+          const decodedToken = decode(token)
+          if(decodedToken.exp * 1000 < new Date().getTime()){
+              handleSignout()
+          }
+      }
+      dispatch(setCurrentUser( JSON.parse(localStorage.getItem('Profile'))))
+  },[User?.token, dispatch])
+
   return (
 <nav class="navbar row">
   <div className="container-fluid">
@@ -43,6 +71,9 @@ const handleSubmit = (e) => {
 </div>
 <div class="col">
     <div class="float-end">
+
+      { User === null ?
+      <>
       <b>create account.</b>
       <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#RegistrationModal">
   It's free!
@@ -108,6 +139,14 @@ const handleSubmit = (e) => {
     </div>
   </div>
 </div>
+</> :
+<>
+<Avatar>
+  <Link to={`/Users/${User?.result?._id}`}>{User.result.name.charAt(0).toUpperCase()}</Link>
+  </Avatar>
+<button onClick={handleSignout}>Sign out</button>
+</>
+}
       </div>
       </div>
       </div>
