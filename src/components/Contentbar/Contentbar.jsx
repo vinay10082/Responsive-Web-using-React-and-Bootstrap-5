@@ -1,13 +1,10 @@
 import React from 'react'
-// import { useLocation, useNavigate } from 'react-router-dom'
 import { useSelector} from 'react-redux'
 import PostsList from './PostsList'
 
 function LeftSidebar() {
 
-  // const location = useLocation()
-  // const user = 1;
-  // const navigate = useNavigate()
+
 
   const postsList = useSelector (state => state.postsReducer)
 
@@ -19,7 +16,6 @@ function LeftSidebar() {
                     postsList.data === null ?
                     <h1>Loading...</h1> :
                     <>
-                        <p>{ PostsList.data.length } posts</p>
                         <PostsList questionsList={postsList.data} />
                     </>
                 }
