@@ -10,7 +10,7 @@ app.use(express.urlencoded({limit: "30mb", extended: true}))
 app.use(cors());
 
 app.get('/',(req, res) => {
-    res.send("This is a stack overflow clone API")
+    res.send("API is working")
 })
 
 const PORT =process.env.PORT || 5000
