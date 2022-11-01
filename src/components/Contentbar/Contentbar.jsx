@@ -1,35 +1,30 @@
 import React from 'react'
-import wallpaper from '../../assets/wallpaper.jpg'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useSelector} from 'react-redux'
+import PostsList from './PostsList'
 
 function LeftSidebar() {
+
+  // const location = useLocation()
+  // const user = 1;
+  // const navigate = useNavigate()
+
+  const postsList = useSelector (state => state.postsReducer)
+
   return (
     <div class="modal-body mx-5 row">
   <div class="post-list my-5 col-md-7">
-<div class="card my-2">
-  <img src={wallpaper} class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/" class="btn btn-primary">Go somewhere</a>
+            <div>
+                {
+                    postsList.data === null ?
+                    <h1>Loading...</h1> :
+                    <>
+                        <p>{ PostsList.data.length } posts</p>
+                        <PostsList questionsList={postsList.data} />
+                    </>
+                }
+            </div>
   </div>
-</div>
-<div class="card my-2">
-  <img src={wallpaper} class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card my-2">
-  <img src={wallpaper} class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
   <div class="col-md-3 mx-5 my-5">
     <div class="location my-5 text-end">
       <div class="border-bottom">
