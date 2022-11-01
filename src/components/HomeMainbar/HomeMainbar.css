@@ -3,8 +3,8 @@
 }
 .intro .head{
     position:absolute;
-    top:20%;
     left:32%;
+    bottom:20%; 
     transform: translate(-50%, 50%);
     color:white;
 }

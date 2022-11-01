@@ -30,9 +30,11 @@ function LeftSidebar() {
     </div>
   </div>
 </div>
-  <div class="col-md-3">
-    <div class="location mx-9 my-5">
+  <div class="col-md-3 mx-5 my-5">
+    <div class="location my-5 text-end">
+    <i class="fas fa-location"></i>
       Nodida, Delhi
+      <i class="fas fa-pen"></i>
       <hr></hr>
       <p>Your location will help us serve better and 
         extend a personalised experience. </p>

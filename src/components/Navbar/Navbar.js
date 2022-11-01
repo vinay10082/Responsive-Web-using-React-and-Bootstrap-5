@@ -4,16 +4,20 @@ import Group from '../../assets/Group.png'
 
 function Navbar() {
   return (
-<nav class="navbar bg-light">
-  <div class="container-fluid">
+<nav class="navbar row">
+  <div class="col">
 <a class="navbar-brand" href="/">
-      <img src={logo} alt="Logo" width="20%" class="d-inline-block align-text-top" />
+      <img src={logo} alt="Logo" width="70%" class="d-inline-block align-text-top" />
       </a>
-      <form class="d-flex" role="search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-      <input class="form-control me-2" type="search" placeholder="Search for your favorite groups in ATG" aria-label="Search" />
-    </form>
-    <span class="mr-auto">
+      </div >
+      <div class="input-group col">
+  <button type="button" class="btn btn-success">
+    <i class="fas fa-search"></i>
+  </button>
+    <input type="search" id="form1" class="form-control" placeholder='Search for your favorite groups in ATG' />
+</div>
+<div class="col">
+    <div class="float-end">
       <b>create account.</b><button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
   It's free!
 </button>
@@ -81,9 +85,9 @@ function Navbar() {
     </div>
   </div>
 </div>
-      <select></select>
-    </span>
-  </div>
+<i class="fas fa-downarrow"></i>
+      </div>
+      </div>
 </nav>
   );
 }

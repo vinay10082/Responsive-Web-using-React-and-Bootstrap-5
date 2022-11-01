@@ -27,7 +27,7 @@ function Mainbar() {
           </li>
       </ul>
           <span class="post mr-auto">
-          <button class="btn btn-light">Write Post <select></select></button>
+          <button class="btn btn-light">Write Post<i class="fas fa-downarrow"></i></button>
           <button class="btn btn-primary">Join a Group</button>
           </span>
     </div>
