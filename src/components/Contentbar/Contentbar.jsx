@@ -32,11 +32,10 @@ function LeftSidebar() {
 </div>
   <div class="col-md-3 mx-5 my-5">
     <div class="location my-5 text-end">
-    <i class="fas fa-location"></i>
-      Nodida, Delhi
-      <i class="fas fa-pen"></i>
-      <hr></hr>
-      <p>Your location will help us serve better and 
+      <div class="border-bottom">
+    <i class="fa fa-map-marker" aria-hidden="true"></i> Noida, Delhi <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    </div>
+      <p style={{ color: "#666767", fontSize:"10px"}}> <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Your location will help us serve better and 
         extend a personalised experience. </p>
     </div>
   </div>

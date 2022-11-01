@@ -17,48 +17,51 @@ const handleSubmit = (e) => {
   e.preventDefault()
   if(!email && !password){
       alert('Enter email and password')
-  }
-  if(isSignup){
-      if(!firstname || !lastname){
+    }
+      if(isSignup){
+        if(!firstname || !lastname){
           alert("Enter a name to continue")
-      }
-      console.log(firstname, lastname,email,password)
-  }else{
-      console.log(email, password)
-  }
+        }
+          console.log({firstname, lastname,email,password})
+      }else{
+        console.log({email, password})
+    }
 }
   return (
 <nav class="navbar row">
+  <div className="container-fluid">
   <div class="col">
 <a class="navbar-brand" href="/">
       <img src={logo} alt="Logo" width="70%" class="d-inline-block align-text-top" />
       </a>
       </div >
       <div class="input-group col">
-  <button type="button" class="btn btn-success">
-    <i class="fas fa-search"></i>
+  <button type="button" class="btn btn-light border-top border-bottom">
+  <i class="fa fa-search"></i>
   </button>
     <input type="search" id="form1" class="form-control" placeholder='Search for your favorite groups in ATG' />
 </div>
 <div class="col">
     <div class="float-end">
-      <b>create account.</b><button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#RegistrationModal">
+      <b>create account.</b>
+      <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#RegistrationModal">
   It's free!
+  <i class="fa fa-angle-down text-dark" aria-hidden="true"></i>
 </button>
 {/* Model */}
 <div class="modal fade" id="RegistrationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-success text-light">
         
         { isSignup && <h1 class="modal-title fs-6" id="exampleModalLabel">Let's learn, share & 
         inspire each other with 
-        our passion for computer engineering. Sign up now 🤘🏼</h1> }
+        our passion for computer engineering. <b>Create Account now 🤘🏼</b></h1> }
         { !isSignup && <h1 class="modal-title fs-6" id="exampleModalLabel">Let's learn, share & 
         inspire each other with 
-        our passion for computer engineering. Login now 🤘🏼</h1> }
+        our passion for computer engineering. <b>Sign in now 🤘🏼</b></h1> }
         
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
       <div>
@@ -91,8 +94,8 @@ const handleSubmit = (e) => {
                         { isSignup && <p style={{ color: "#666767", fontSize:"13px"}}>Passwords must contain at least eight characters, including at least 1 letter and 1 number.</p> }
                             { !isSignup && <p style={{ color: "#007ac6", fontSize:'13px'}}>forgot password?</p> }
                         </div>
-                    { isSignup ? <button type='submit' className='btn btn-primary'>Sign up</button>
-                     : <button type='submit' className='btn btn-primary'>Login</button>}
+                    { isSignup ? <button type='submit' className='btn btn-primary'>Create Account</button>
+                     : <button type='submit' className='btn btn-primary'>Sign In</button>}
                 </form>
                 <p>
                     {isSignup ? 'Already have an account?' : "Don't have an account?"}
@@ -105,7 +108,7 @@ const handleSubmit = (e) => {
     </div>
   </div>
 </div>
-<i class="fas fa-downarrow"></i>
+      </div>
       </div>
       </div>
 </nav>
