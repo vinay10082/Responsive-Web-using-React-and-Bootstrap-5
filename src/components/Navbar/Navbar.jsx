@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import decode from 'jwt-decode'
 
+import { signup, signin } from '../../actions/auth'
 import logo from '../../assets/logo.png'
 // import Group from '../../assets/Group.png'
 import Avatar from '../../components/Avatar/Avatar'
@@ -14,6 +15,7 @@ function Navbar() {
   const [lastname, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
 
   const handleSwitch = () => {
     setIsSignup(!isSignup)
@@ -29,8 +31,10 @@ const handleSubmit = (e) => {
           alert("Enter a name to continue")
         }
           console.log({firstname, lastname,email,password})
+          dispatch(signup({ firstname, lastname, email, password }, navigate))
       }else{
         console.log({email, password})
+        dispatch(signin({ email, password }, navigate))
     }
 }
 

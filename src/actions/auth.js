@@ -12,9 +12,9 @@ export const signup = (authData, navigate) => async (dispatch) => {
     }
 }
 
-export const login = (authData, navigate) => async (dispatch) => {
+export const signin = (authData, navigate) => async (dispatch) => {
     try {
-        const { data } = await api.logIn(authData)
+        const { data } = await api.SignIn(authData)
         dispatch({ type: 'AUTH', data})
         dispatch(setCurrentUser( JSON.parse(localStorage.getItem('Profile')) ))
         navigate('/')

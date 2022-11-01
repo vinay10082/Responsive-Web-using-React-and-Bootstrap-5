@@ -20,12 +20,12 @@ export const fetchAllPosts = () => async (disptach) => {
     }
 }
 
-export const deletePost = (id, navigate) => async (dispatch) => {
-    try {
-        await api.deletePost(id)
-        dispatch(fetchAllPosts())
-        navigate('/')
-    } catch (error) {
-        console.log(error)
-    }
-}
+// export const deletePost = (id, navigate) => async (dispatch) => {
+//     try {
+//         await api.deletePost(id)
+//         dispatch(fetchAllPosts())
+//         navigate('/')
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
