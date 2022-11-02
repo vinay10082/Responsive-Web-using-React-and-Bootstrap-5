@@ -85,7 +85,7 @@ const handlePostSubmit = (e) => {
     </div>
   </div>
 </div>
-          <button class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Join a Group</button>
+          <button class="btn btn-primary"><i class="fa fa-users" aria-hidden="true"></i> Join a Group</button>
           </span>
     </div>
   </div>

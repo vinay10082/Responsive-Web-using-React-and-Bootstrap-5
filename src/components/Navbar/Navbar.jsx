@@ -79,9 +79,9 @@ const handleSubmit = (e) => {
       { User === null ?
       <> */}
       <b>create account.</b>
-      <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#RegistrationModal">
+      <button type="button" class="btn btn-link fw-bold text-decoration-none" data-bs-toggle="modal" data-bs-target="#RegistrationModal">
   It's free!
-  <i class="fa fa-angle-down text-dark" aria-hidden="true"></i>
+  <i class="fa fa-angle-down text-dark fw-bold" aria-hidden="true"></i>
 </button>
 {/* </> :
 <>
