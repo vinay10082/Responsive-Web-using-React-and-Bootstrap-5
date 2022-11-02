@@ -1,26 +1,13 @@
 import React from 'react'
-// import { useSelector} from 'react-redux'
 
-// import PostsList from './PostsList'
 import wallpaper from '../../assets/wallpaper.jpg'
 
 function LeftSidebar() {
 
-  // const postsList = useSelector (state => state.postsReducer)
-
   return (
     <div class="modal-body mx-5 row">
   <div class="post-list my-5 col-md-7">
-            {/* <div>
-                 {
-                    postsList.data === null ?
-                    <h1>Loading...</h1>
-                     :
-                   <>
-                       <PostsList questionsList={postsList.data} />
-                  </>
-                 } 
-            </div> */}
+
   <div class="card my-2">
   <img src={wallpaper} class="card-img-top" alt="..." />
   <div class="card-body">
