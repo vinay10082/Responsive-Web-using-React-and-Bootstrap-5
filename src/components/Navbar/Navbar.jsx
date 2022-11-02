@@ -41,7 +41,7 @@ const handleSubmit = (e) => {
   <div className="container-fluid">
   <div class="col">
 <a class="navbar-brand" href="/">
-      <img src={logo} alt="Logo" width="70%" class="d-inline-block align-text-top" />
+      <img src={logo} alt="Logo" width="100%" class="d-inline-block align-text-top" />
       </a>
       </div >
       <div class="input-group col">
