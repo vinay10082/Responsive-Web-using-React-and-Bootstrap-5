@@ -5,3 +5,12 @@ position: fixed;
 bottom: 2%;
 right: 2%;
 }
+.float-btn{
+    background: rgb(255, 0, 85);
+    color:white;
+    border-radius: 75px;
+    width: 60px;
+    height: 60px;
+    border:none;
+    font-size: xx-large;
+}

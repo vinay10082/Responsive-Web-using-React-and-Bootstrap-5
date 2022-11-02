@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import { setCurrentUser } from '../../actions/currentUser'
-import { Link, useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import decode from 'jwt-decode'
+// import { setCurrentUser } from '../../actions/currentUser'
+// import { Link, useNavigate } from 'react-router-dom'
+// import { useSelector, useDispatch } from 'react-redux'
+// import decode from 'jwt-decode'
 
-import { signup, signin } from '../../actions/auth'
+// import { signup, signin } from '../../actions/auth'
 import logo from '../../assets/logo.png'
 // import Group from '../../assets/Group.png'
 import Avatar from '../../components/Avatar/Avatar'
@@ -31,33 +31,33 @@ const handleSubmit = (e) => {
           alert("Enter a name to continue")
         }
           console.log({firstname, lastname,email,password})
-          dispatch(signup({ firstname, lastname, email, password }, navigate))
+          // dispatch(signup({ firstname, lastname, email, password }, navigate))
       }else{
         console.log({email, password})
-        dispatch(signin({ email, password }, navigate))
+        // dispatch(signin({ email, password }, navigate))
     }
 }
 
-  const dispatch = useDispatch()
-  var User = useSelector((state) => (state.currentUserReducer))
-  const navigate = useNavigate();
+  // const dispatch = useDispatch()
+  // var User = useSelector((state) => (state.currentUserReducer))
+  // const navigate = useNavigate();
   
   
-  const handleSignout = () => {
-      dispatch({ type: 'LOGOUT'});
-      navigate('/')
-      dispatch(setCurrentUser(null))
-  }
-  useEffect(() => {
-      const token = User?.token 
-      if(token){
-          const decodedToken = decode(token)
-          if(decodedToken.exp * 1000 < new Date().getTime()){
-              handleSignout()
-          }
-      }
-      dispatch(setCurrentUser( JSON.parse(localStorage.getItem('Profile'))))
-  },[User?.token, dispatch])
+  // const handleSignout = () => {
+  //     dispatch({ type: 'LOGOUT'});
+  //     navigate('/')
+  //     dispatch(setCurrentUser(null))
+  // }
+  // useEffect(() => {
+  //     const token = User?.token 
+  //     if(token){
+  //         const decodedToken = decode(token)
+  //         if(decodedToken.exp * 1000 < new Date().getTime()){
+  //             handleSignout()
+  //         }
+  //     }
+  //     dispatch(setCurrentUser( JSON.parse(localStorage.getItem('Profile'))))
+  // },[User?.token, dispatch])
 
   return (
 <nav class="navbar row">
@@ -75,14 +75,22 @@ const handleSubmit = (e) => {
 </div>
 <div class="col">
     <div class="float-end">
-
+{/* 
       { User === null ?
-      <>
+      <> */}
       <b>create account.</b>
       <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#RegistrationModal">
   It's free!
   <i class="fa fa-angle-down text-dark" aria-hidden="true"></i>
 </button>
+{/* </> :
+<>
+<Avatar>
+  <Link to={`/Users/${User?.result?._id}`}>{User.result.name.charAt(0).toUpperCase()}</Link>
+  </Avatar>
+<button onClick={handleSignout}>Sign out</button>
+</>
+} */}
 {/* Model */}
 <div class="modal fade" id="RegistrationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -143,14 +151,6 @@ const handleSubmit = (e) => {
     </div>
   </div>
 </div>
-</> :
-<>
-<Avatar>
-  <Link to={`/Users/${User?.result?._id}`}>{User.result.name.charAt(0).toUpperCase()}</Link>
-  </Avatar>
-<button onClick={handleSignout}>Sign out</button>
-</>
-}
       </div>
       </div>
       </div>
