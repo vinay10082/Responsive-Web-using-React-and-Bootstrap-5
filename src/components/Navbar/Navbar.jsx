@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+// import { useSelector, useDispatch } from 'react-redux'
 import logo from '../../assets/logo.png'
 // import Group from '../../assets/Group.png'
-import Avatar from '../../components/Avatar/Avatar'
+// import Avatar from '../../components/Avatar/Avatar'
 
 function Navbar() {
   const [isSignup, setIsSignup] = useState(false)
@@ -10,6 +10,7 @@ function Navbar() {
   const [lastname, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmpassword, setConfirmPassword] = useState('')
 
 
   const handleSwitch = () => {
@@ -19,13 +20,17 @@ function Navbar() {
 const handleSubmit = (e) => {
   e.preventDefault()
   if(!email && !password){
-      alert('Enter email and password')
-    }
-      if(isSignup){
-        if(!firstname || !lastname){
-          alert("Enter a name to continue")
+    alert('Enter email and password')
+  }
+  if(isSignup){
+        if(password !== confirmpassword){
+          alert('Password not match')
+        }else{
+          if(!firstname || !lastname){
+            alert("Enter a name to continue")
+          }
+            console.log({firstname, lastname,email,password})
         }
-          console.log({firstname, lastname,email,password})
       }else{
         console.log({email, password})
     }
@@ -50,8 +55,7 @@ const handleSubmit = (e) => {
       <div>
       <b>create account.</b>
       <button type="button" class="btn btn-link fw-bold text-decoration-none" data-bs-toggle="modal" data-bs-target="#RegistrationModal">
-  It's free!
-  <i class="fa fa-angle-down text-dark fw-bold" aria-hidden="true"></i>
+  It's free! <i class="fa fa-angle-down text-dark fw-bold" aria-hidden="true"></i>
 </button>
 
 {/* Model */}
@@ -98,14 +102,34 @@ const handleSubmit = (e) => {
                             <h4>Password</h4>
                         <input type="password" class='form-control' name='password' id='password' onChange={(e) => {setPassword(e.target.value)}}/>
                         { isSignup && <p style={{ color: "#666767", fontSize:"13px"}}>Passwords must contain at least eight characters, including at least 1 letter and 1 number.</p> }
-                            { !isSignup && <p style={{ color: "#007ac6", fontSize:'13px'}}>forgot password?</p> }
+                        {
+                          isSignup && (
+                            <>
+                            <h4>Confirm Password</h4>
+                            <input type="password" class='form-control' name='confirm-password' id='confirm-password' onChange={(e) => {setConfirmPassword(e.target.value)}}/>
+                            </>
+                          )
+                        }
+                            { !isSignup && 
+                            <div>
+                            <p type="button" data-bs-toggle="modal" data-bs-target="#FModal" style={{ color: "#007ac6", fontSize:'13px'}}>forgot password?</p>
+                            </div>
+                            }
                         </div>
-                    { isSignup ? <button type='submit' className='btn btn-primary'>Create Account</button>
-                     : <button type='submit' className='btn btn-primary'>Sign In</button>}
+                        
+                    { isSignup ?
+                    <>
+                    <button type='submit' className='btn btn-primary'>Create Account</button>
+                    </>
+                     : 
+                     <>
+                     <button type='submit' className='btn btn-primary'>Sign In</button>
+                     </>
+                     }
                 </form>
                 <p>
                     {isSignup ? 'Already have an account?' : "Don't have an account?"}
-                    <button type='button' className='btn btn-link' onClick={handleSwitch}>{ isSignup ? "Log in" : 'sign up'}</button>
+                    <button type='button' className='btn btn-link text-decoration-none' onClick={handleSwitch}>{ isSignup ? "sign in" : 'sign up'}</button>
                 </p>
             </div>
         </section>
@@ -114,10 +138,26 @@ const handleSubmit = (e) => {
     </div>
   </div>
 </div>
+{/* Model */}
+<div class="modal fade" id="FModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-light">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Change Your Password</h1>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div>
+      <p type="button" data-bs-toggle="modal" data-bs-target="#RegistrationModal" style={{ color: "#007ac6", fontSize:'13px'}}>sign in</p>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div> 
-      </div>
-      </div>
-      </div>
+</div>
+</div>
+</div>
 </nav>
   );
 }
