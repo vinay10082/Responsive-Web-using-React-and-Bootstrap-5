@@ -9,8 +9,8 @@ API.interceptors.request.use((req) => {
     return req;
 })
 
-export const SignIn = (authData) => API.post('/user/signin', authData);
-export const signUp = (authData) => API.post('/user/signup', authData);
+export const SignIn = (authData) => API.post('/auth/signin', authData);
+export const signUp = (authData) => API.post('/auth/signup', authData);
 
 export const post = (postData) => API.post('/post', postData)
 export const getAllpostss = () => API.get('/posts/get');

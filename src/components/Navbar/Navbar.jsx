@@ -1,9 +1,13 @@
-import React, {useState} from 'react'
-// import { useSelector, useDispatch } from 'react-redux'
+import React, {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import decode from 'jwt-decode'
 
 import Oletter from '../../assets/Oletter.png'
 // import Group from '../../assets/Group.png'
-// import Avatar from '../../components/Avatar/Avatar'
+import Avatar from '../../components/Avatar/Avatar'
+import { setCurrentUser } from '../../actions/currentUser'
+import { signup, signin } from '../../actions/auth'
 
 function Navbar() {
   const [isSignup, setIsSignup] = useState(false)
@@ -31,17 +35,39 @@ const handleSubmit = (e) => {
             alert("Enter a name to continue")
           }
             console.log({firstname, lastname,email,password})
+            dispatch(signup({ firstname, lastname, email, password }, navigate))
         }
       }else{
         console.log({email, password})
+        dispatch(signin({ email, password }, navigate))
     }
 }
+
+const dispatch = useDispatch()
+var User = useSelector((state) => (state.currentUserReducer))
+const navigate = useNavigate();
+
+const handleLogout = () => {
+  dispatch({ type: 'SIGNOUT'});
+  navigate('/')
+  dispatch(setCurrentUser(null))
+}
+useEffect(() => {
+  const token = User?.token 
+  if(token){
+      const decodedToken = decode(token)
+      if(decodedToken.exp * 1000 < new Date().getTime()){
+          handleLogout()
+      }
+  }
+  dispatch(setCurrentUser( JSON.parse(localStorage.getItem('Profile'))))
+},[User?.token, dispatch])
 
   return (
 <nav class="navbar row">
   <div className="container-fluid">
   <div class="col">
-    <l><b class="text-success">ATG.</b>W<i><img src={Oletter} /></i>RLD</l>
+    <i><b class="text-success">ATG.</b>W<img src={Oletter} />RLD</i>
       </div >
       <div class="input-group col">
   <button type="button" class="btn btn-light border-top border-bottom">
@@ -51,12 +77,18 @@ const handleSubmit = (e) => {
 </div>
 <div class="col">
     <div class="float-end">
+      {User === null ?
       <div>
       <b>create account.</b>
       <button type="button" class="btn btn-link fw-bold text-decoration-none" data-bs-toggle="modal" data-bs-target="#RegistrationModal">
   It's free! <i class="fa fa-angle-down text-dark fw-bold" aria-hidden="true"></i>
 </button>
-
+</div> :
+<>
+<b>{User.result.firstname}</b><b>{User.result.lastname}</b>
+<p type="button" className='btn btn-link text-decoration-none' onClick={handleLogout}>Log out</p>
+</>
+}
 {/* Model */}
 <div class="modal fade" id="RegistrationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -152,7 +184,6 @@ const handleSubmit = (e) => {
       </div>
     </div>
   </div>
-</div>
 </div> 
 </div>
 </div>
