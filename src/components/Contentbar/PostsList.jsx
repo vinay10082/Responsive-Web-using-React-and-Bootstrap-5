@@ -3,15 +3,13 @@ import Post from './Post'
 
 const PostsList = ({postsList}) => {
   return (
-
     <>
     {
         postsList.map((post) =>(
-            <Post post = {post} key={post._id} />
+            <Post post={post} key={post._id} />
         ))
     }
     </>
-
   )
 }
 

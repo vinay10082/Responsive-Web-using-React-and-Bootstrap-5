@@ -12,6 +12,7 @@ function Mainbar() {
 
   const dispatch = useDispatch()
   const User = useSelector((state) => (state.currentUserReducer))
+  const postsList = useSelector(state => state.postsReducer)
   const navigate = useNavigate()
 
 const handlePostSubmit = (e) => {
@@ -37,19 +38,19 @@ const handlePostSubmit = (e) => {
     <div class="collapse navbar-collapse mx-5" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
-          <a class="nav-link" href="/">All Posts</a>
+          <a class="nav-link" href="#!">All Posts ({ postsList.data.length })</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="/">Article</a>
+          <a class="nav-link" href="#!">Article</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="/">Event</a>
+          <a class="nav-link" href="#!">Event</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="/">Education</a>
+          <a class="nav-link" href="#!">Education</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="/">Job</a>
+          <a class="nav-link" href="#!">Job</a>
           </li>
       </ul>
           <span class="post mr-auto">
@@ -85,11 +86,7 @@ const handlePostSubmit = (e) => {
           <h4>Add Description *</h4>
           <textarea onChange={(e) => {setDescription(e.target.value)}} />
         </div>
-        {/* <div>
-        <h4>Add Related Image</h4>
-        <input type="file" onChange={(e) => {set(e.target.value)}} />
-        </div> */}
-
+        
         <button type='submit' class="btn btn-primary">Post</button>
       </div>
         </form>

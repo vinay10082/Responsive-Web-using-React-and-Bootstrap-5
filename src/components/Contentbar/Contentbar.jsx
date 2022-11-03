@@ -12,15 +12,14 @@ function Contentbar() {
   <div class="post-list my-5 col-md-7">
 
   <div>
-                {
-                    postsList.data === null ?
-                    <h1>Loading...</h1> :
-                    <>
-                        <p>{ postsList.data.length } posts</p>
-                        <PostsList questionsList={postsList.data} />
-                    </>
-                }
-            </div>
+{
+  postsList.data === null ?
+  <h1>Loading...</h1> :
+  <>
+  <PostsList postsList={postsList.data} />
+  </>
+}
+  </div>
 
   </div>
   <div class="col-md-3 mx-5 my-5">
