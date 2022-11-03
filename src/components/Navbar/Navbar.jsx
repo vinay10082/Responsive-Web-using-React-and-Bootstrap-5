@@ -83,7 +83,7 @@ useEffect(() => {
 </button>
 </div> :
 <>
-<i class="bg-danger text-white border border-warning border-3 rounded-circle">{User.result.firstname.charAt(0)}&nbsp;{User.result.lastname.charAt(0)}</i>
+<i class="bg-warning text-white rounded-circle fs-5">&nbsp;{User.result.firstname.charAt(0)}&nbsp;{User.result.lastname.charAt(0)}&nbsp;</i>
 <i>&nbsp;{User.result.firstname}&nbsp;{User.result.lastname}</i>
 <p type="button" className='btn btn-link text-decoration-none' onClick={handleLogout}>Log out</p>
 </>
