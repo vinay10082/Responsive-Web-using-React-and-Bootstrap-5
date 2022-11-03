@@ -15,3 +15,5 @@ export const signUp = (authData) => API.post('/auth/signup', authData);
 export const post = (postData) => API.post('/posts/post', postData)
 export const getAllposts = () => API.get('/posts/get');
 export const deletePost = (id) => API.delete(`/posts/delete/${id}`) 
+
+export const resetPassword = (authData) => API.post('/auth/resetpassword', authData);

@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 
 import authRoutes from './routes/auth.js'
 import postRoutes from './routes/posts.js'
+import resetPasswordRoutes from './routes/password.js'
 
 const app = express();
 dotenv.config();
@@ -18,6 +19,7 @@ app.get('/',(req, res) => {
 
 app.use('/auth', authRoutes)
 app.use('/posts', postRoutes)
+app.use('/auth', resetPasswordRoutes)
 
 const PORT =process.env.PORT || 5000
 

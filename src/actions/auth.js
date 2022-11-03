@@ -22,3 +22,13 @@ export const signin = (authData, navigate) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const resetPassword = (authData, navigate) => async (dispatch) => {
+    try {
+        const { data } =  await api.resetPassword(authData)
+        dispatch({ type: 'AUTH', data})
+        navigate('/')
+    } catch (error) {
+        console.log(error)
+    }
+}

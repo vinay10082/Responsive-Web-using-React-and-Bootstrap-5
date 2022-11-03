@@ -5,7 +5,7 @@ import decode from 'jwt-decode'
 
 import Oletter from '../../assets/Oletter.png'
 import { setCurrentUser } from '../../actions/currentUser'
-import { signup, signin } from '../../actions/auth'
+import { signup, signin, resetPassword } from '../../actions/auth'
 
 function Navbar() {
   const [isSignup, setIsSignup] = useState(false)
@@ -14,10 +14,21 @@ function Navbar() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmpassword, setConfirmPassword] = useState('')
+  const [existingPassword, setExistingPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
 
 
   const handleSwitch = () => {
     setIsSignup(!isSignup)
+}
+
+const handleResetPassword = (e) => {
+  e.preventDefault()
+  if(!email && !existingPassword && !newPassword){
+    alert('Enter email and password')
+  }
+  console.log({email, existingPassword, newPassword})
+  dispatch(resetPassword({email, existingPassword, newPassword}, navigate))
 }
 
 const handleSubmit = (e) => {
@@ -142,7 +153,7 @@ useEffect(() => {
                         }
                             { !isSignup && 
                             <div>
-                            <p type="button" data-bs-toggle="modal" data-bs-target="#FModal" style={{ color: "#007ac6", fontSize:'13px'}}>forgot password?</p>
+                            <p type="button" data-bs-toggle="modal" data-bs-target="#FModal" style={{ color: "#007ac6", fontSize:'13px'}}>reset password?</p>
                             </div>
                             }
                         </div>
@@ -178,6 +189,15 @@ useEffect(() => {
       </div>
       <div class="modal-body">
       <div>
+        <form onSubmit={handleResetPassword}>
+          <h4>Email</h4>
+          <input type="email" class='form-control' onChange={(e) => {setEmail(e.target.value)}} />
+          <h4>Old Password</h4>
+          <input type="password" class='form-control' onChange={(e) => {setExistingPassword(e.target.value)}} />
+          <h4>New Password</h4>
+          <input type="password" class='form-control' onChange={(e) => {setNewPassword(e.target.value)}} />
+          <button class="btn btn-primary">Change Password</button>
+        </form>
       <p type="button" data-bs-toggle="modal" data-bs-target="#RegistrationModal" style={{ color: "#007ac6", fontSize:'13px'}}>sign in</p>
       </div>
       </div>
