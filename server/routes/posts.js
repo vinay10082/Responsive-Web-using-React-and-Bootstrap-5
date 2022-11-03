@@ -5,7 +5,7 @@ import auth from '../middleware/auth.js'
 
 const router = express.Router()
 
-router.post('/Ask', auth, Post)
+router.post('/post', auth, Post)
 router.get('/get', getAllPosts)
 router.delete('/delete/:id', auth, deletePost);
 

@@ -1,22 +1,22 @@
-import Posts from '../models/Posts.js'
+import posts from '../models/Posts.js'
 import mongoose from 'mongoose'
 
 export const Post = async (req, res) => {
-    const postQuestionData = req.body;
+    const postData = req.body;
     const userId = req.userId;
-    const post = new Posts({ ...postQuestionData, userId});
+    const post = new posts({ ...postData, userId});
     try {
         await post.save();
-        res.status(200).json("Posted a question successfully")
+        res.status(200).json("make a post successfully")
     } catch (error) {
         console.log(error)
-        res.status(409).json("Couldn't post a new question")        
+        res.status(409).json("Couldn't make a new post")        
     }
 }
 
 export const getAllPosts = async (req, res) => {
     try {
-        const postsList = await Posts.find();
+        const postsList = await posts.find();
         res.status(200).json(postsList);
     } catch (error) {
         res.status(404).json({ message: error.message });
@@ -31,7 +31,7 @@ export const deletePost = async (req, res) => {
     }
 
     try {
-        await Posts.findByIdAndRemove( _id );
+        await posts.findByIdAndRemove( _id );
         res.status(200).json({ message: "successfully deleted..."})
     } catch (error) {
         res.status(404).json({ message: error.message })
