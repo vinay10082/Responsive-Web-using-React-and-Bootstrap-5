@@ -38,7 +38,9 @@ const handlePostSubmit = (e) => {
     <div class="collapse navbar-collapse mx-5" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
-          <a class="nav-link" href="#!">All Posts ({ postsList.data.length })</a>
+          <a class="nav-link" href="#!">All Posts 
+          {/* ({ postsList.data.length }) */}
+          </a>
           </li>
           <li class="nav-item">
           <a class="nav-link" href="#!">Article</a>

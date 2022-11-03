@@ -4,8 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import decode from 'jwt-decode'
 
 import Oletter from '../../assets/Oletter.png'
-// import Group from '../../assets/Group.png'
-import Avatar from '../../components/Avatar/Avatar'
 import { setCurrentUser } from '../../actions/currentUser'
 import { signup, signin } from '../../actions/auth'
 
@@ -85,7 +83,8 @@ useEffect(() => {
 </button>
 </div> :
 <>
-<b>{User.result.firstname}</b><b>{User.result.lastname}</b>
+<i class="bg-danger text-white border border-warning border-3 rounded-circle">{User.result.firstname.charAt(0)}&nbsp;{User.result.lastname.charAt(0)}</i>
+<i>&nbsp;{User.result.firstname}&nbsp;{User.result.lastname}</i>
 <p type="button" className='btn btn-link text-decoration-none' onClick={handleLogout}>Log out</p>
 </>
 }
