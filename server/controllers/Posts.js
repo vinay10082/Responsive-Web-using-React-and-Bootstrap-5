@@ -37,3 +37,13 @@ export const deletePost = async (req, res) => {
         res.status(404).json({ message: error.message })
     }
 }
+
+// export const likePost = async (req, res) => {
+
+// }
+// export const dislikePost = async (req, res) => {
+
+// }
+// export const PostComment = async (req, res) => {
+
+// }

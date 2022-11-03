@@ -7,6 +7,14 @@ const PostSchema = mongoose.Schema({
     userPosted: { type: String, required: "Post must have an author"},
     userId: { type: String},
     askedOn: { type: Date, default: Date.now},
+    like: { type: [String], default: []},
+    dislike: { type: [String], default: []},
+    comment: [{
+        commentBody: String,
+        userId: String,
+        commentOn: { type: Date, default: Date.now},
+    
+    }]
 })
 
 export default mongoose.model("Post", PostSchema)
