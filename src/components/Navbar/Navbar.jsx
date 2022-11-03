@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 // import { useSelector, useDispatch } from 'react-redux'
-import logo from '../../assets/logo.png'
+
+import Oletter from '../../assets/Oletter.png'
 // import Group from '../../assets/Group.png'
 // import Avatar from '../../components/Avatar/Avatar'
 
@@ -40,9 +41,7 @@ const handleSubmit = (e) => {
 <nav class="navbar row">
   <div className="container-fluid">
   <div class="col">
-<a class="navbar-brand" href="/">
-      <img src={logo} alt="Logo" width="100%" class="d-inline-block align-text-top" />
-      </a>
+    <l><b class="text-success">ATG.</b>W<i><img src={Oletter} /></i>RLD</l>
       </div >
       <div class="input-group col">
   <button type="button" class="btn btn-light border-top border-bottom">
