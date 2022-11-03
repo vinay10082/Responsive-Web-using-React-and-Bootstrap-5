@@ -24,7 +24,7 @@ const Post = ({post}) => {
   <div class="card-body">
     <>
     <p class="card-date">
-    asked {moment(post.askedOn).fromNow()}
+    posted {moment(post.askedOn).fromNow()}
     </p>
     </>
     <p>{post.field}
