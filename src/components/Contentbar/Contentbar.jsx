@@ -1,27 +1,27 @@
 import React from 'react'
+import { useSelector} from 'react-redux'
+import PostsList from './PostsList'
 
-import wallpaper from '../../assets/wallpaper.jpg'
+function Contentbar() {
 
-function LeftSidebar() {
+  const postsList = useSelector(state => state.postsReducer)
+
 
   return (
     <div class="modal-body mx-5 row">
   <div class="post-list my-5 col-md-7">
 
-  <div class="card my-2">
-  <img src={wallpaper} class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">Hello! World</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste magnam accusamus ex asperiores ad voluptates vitae! Nesciunt reprehenderit dolores doloremque, veniam nulla amet? Facere molestiae animi non nemo corporis dicta.</p>
-    </div>
-  </div>
-  <div class="card my-2">
-  <img src={wallpaper} class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">Hello! World</h5>
-    <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident et incidunt quod veritatis dolorum fugiat. Iure commodi, distinctio non magni magnam explicabo sint deleniti temporibus voluptate ratione expedita architecto itaque.</p>
-    </div>
-  </div>
+  <div>
+                {
+                    postsList.data === null ?
+                    <h1>Loading...</h1> :
+                    <>
+                        <p>{ postsList.data.length } posts</p>
+                        <PostsList questionsList={postsList.data} />
+                    </>
+                }
+            </div>
+
   </div>
   <div class="col-md-3 mx-5 my-5">
     <div class="location my-5 text-end">
@@ -36,4 +36,4 @@ function LeftSidebar() {
   )
 }
 
-export default LeftSidebar
+export default Contentbar

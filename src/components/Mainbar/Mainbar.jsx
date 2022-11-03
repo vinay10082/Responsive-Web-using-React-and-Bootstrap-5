@@ -1,4 +1,8 @@
 import React , {useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
+import { makePost } from '../../actions/post'
 
 function Mainbar() {
 
@@ -6,15 +10,23 @@ function Mainbar() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
+  const dispatch = useDispatch()
+  const User = useSelector((state) => (state.currentUserReducer))
+  const navigate = useNavigate()
 
 const handlePostSubmit = (e) => {
   e.preventDefault()
+  if(User === null){
+    alert("login or signup to ask a question")
+}else{
   if(!field && !title && !description){
       alert('filling marked field is compulsary')
   }
   else{
   console.log({field, title, description})
-}
+  dispatch(makePost({ field, title, description, userPosted: User.result.firstname }, navigate))
+  }
+ }
 }
   return (
 <nav class="navbar navbar-expand-lg bg-light border-bottom">

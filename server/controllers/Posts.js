@@ -1,4 +1,5 @@
 import Posts from '../models/Posts.js'
+import mongoose from 'mongoose'
 
 export const Post = async (req, res) => {
     const postQuestionData = req.body;
@@ -19,5 +20,20 @@ export const getAllPosts = async (req, res) => {
         res.status(200).json(postsList);
     } catch (error) {
         res.status(404).json({ message: error.message });
+    }
+}
+
+export const deletePost = async (req, res) => {
+    const { id:_id } = req.params ;
+
+    if(!mongoose.Types.ObjectId.isValid(_id)){
+        return res.status(404).send('post unavailable...');
+    }
+
+    try {
+        await Posts.findByIdAndRemove( _id );
+        res.status(200).json({ message: "successfully deleted..."})
+    } catch (error) {
+        res.status(404).json({ message: error.message })
     }
 }
