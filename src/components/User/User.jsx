@@ -1,10 +1,11 @@
 import React from 'react'
 
-const User = ({users}) => {
+const User = ({user}) => {
   return (
     <div>
-    <h3>{ users.firstname.charAt(0).toUpperCase() }</h3>
-    <h5>{ users.firstname }</h5>
+    <h3>{ user.firstname.charAt(0).toUpperCase() }</h3>
+    <h5>{ user.firstname }</h5>
+    <h5>{ user.lastname }</h5>
     </div>
   )
 }

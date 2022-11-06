@@ -1,7 +1,9 @@
 import React from 'react'
+
 import UsersList from '../components/User/UsersList'
 
 const Users = () => {
+
   return (
         <div className="main-container mx-5">
     <div>
@@ -13,9 +15,11 @@ const Users = () => {
     </div>
     <div className="left-container float-start my-5">
         <p>This is user segment</p>
+        {
         <div>
             <UsersList />
         </div>
+        }
     </div>
     <div className="right-container float-end">
         <p>This is user info segment</p>

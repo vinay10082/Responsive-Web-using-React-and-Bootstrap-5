@@ -5,8 +5,7 @@ import User from './User'
 
 const UsersList = () => {
 
-    const users = useSelector((state) => state.usersReducer)
-
+  const users= useSelector((state) => state.usersReducer)
   return (
     <div className='user-list-container'>
     {
